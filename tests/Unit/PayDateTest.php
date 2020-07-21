@@ -3,10 +3,13 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use App\SalaryDate;
+use App\PayDate;
 
 class PayDateTest extends TestCase
 {
+
+
+    protected $sd;
 
     /**
      * all tests will use this->record for testing, set it up here 
@@ -16,7 +19,7 @@ class PayDateTest extends TestCase
     protected function setUp() : void
     {
 	// try with random date rather than now
-	$sd = new PayDate('20-02-20');
+	$this->sd = new PayDate(new \DateTime('20-02-20'));
     }
 
     /**
@@ -26,7 +29,7 @@ class PayDateTest extends TestCase
      */
     public function testBasePayDate()
     {
-	$this->assert($sd->getBasePayDate()->format('d-m-y') == '28-02-20');
+	$this->assertTrue($this->sd->getBasePayDate()->format('d-m-y') == '28-02-20');
     } 
 
     /**
@@ -37,7 +40,7 @@ class PayDateTest extends TestCase
      */
     public function testBasePayDateFuture()
     {
-	$this->assert($sd->getBasePayDate(8)->format('d-m-y') == '30-10-20');
+	$this->assertTrue($this->sd->getBasePayDate(8)->format('d-m-y') == '30-10-20');
     } 
 
     /**
@@ -47,7 +50,7 @@ class PayDateTest extends TestCase
      */
     public function testBonusPayDate()
     {
-	$this->assert($sd->getBonusPayDate()->format('d-m-y') == '10-02-20');
+	$this->assertTrue($this->sd->getBonusPayDate()->format('d-m-y') == '10-02-20');
     } 
 
     /**
@@ -57,6 +60,6 @@ class PayDateTest extends TestCase
      */
     public function testBonusPayDateFuture()
     {
-	$this->assert($sd->getBonusPayDate(3)->format('d-m-y') == '12-05-20');
+	$this->assertTrue($this->sd->getBonusPayDate(3)->format('d-m-y') == '12-05-20');
     } 
 }

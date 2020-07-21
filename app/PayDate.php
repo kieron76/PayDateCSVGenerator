@@ -15,31 +15,32 @@ class PayDate
         'Friday',
     ];
 
-    public __construct(\DateTime $date = null) 
+    public function __construct(\DateTime $date = null) 
     {
         if ($date) {
-            $this->date = $date
+            $this->date = $date;
         } else {
             $this->date = new \DateTime();
         }
     }
 
 
-    public function getBasePayDate($addMonths = 0) : self
+    public function getBasePayDate($addMonths = 0) : \DateTime
     {
 
-        $this->date->add(new DateInterval('P'.$addMonths.'M');
-        $lastDayOfMonthName = new DateTime($this->date->format('t'))->format('l');
-        if (in_array($this->weekDays, $lastDayOfMonth)) {
-            return new DateTime($this->format('t'));
+        $this->date->add(new \DateInterval('P'.$addMonths.'M'));
+	$lastDayOfMonth = new \DateTime($this->date->format('t').'-'.$this->date->format('m-Y'));
+	$lastDayOfMonthName = $lastDayOfMonth->format('l');
+        if (in_array($lastDayOfMonthName, $this->weekDays)) {
+            return $lastDayOfMonth;
         }
 
         if ($lastDayOfMonthName = 'Saturday') {
-            return $this->sub(new DateInterval('P1D'));
+            return $lastDayOfMonth->sub(new \DateInterval('P1D'));
         }
 
         if ($lastDayOfMonthName = 'Sunday') {
-            return $this->sub(new DateInterval('P2D'));
+            return $lastDayOfMonth->sub(new \DateInterval('P2D'));
         }
     }
 }
