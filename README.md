@@ -2,6 +2,7 @@
 
  - A Linux OS running PHP 7+
  - Git
+ - Composer
 
 ## Installation
 
