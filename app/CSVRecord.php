@@ -4,9 +4,27 @@ namespace App;
 
 class CSVRecord 
 {
+
+    /**
+     * Associative array of fields held in the record
+     *
+     * @var array
+     */
     protected array $fields = []; 
+
+    /**
+     * An array list of the field order to write the csv in
+     *
+     * @var array
+     */ 
     protected array $returnOrder = [];
 
+    
+    /**
+     * Returns an array of field values in the sort order provided
+     *
+     * @return array
+     */
     public function getArray() : array 
     {
         $returnArray = [];
@@ -22,6 +40,13 @@ class CSVRecord
         return $returnArray;
     }
 
+    /**
+     * Add a field with a value to the record
+     *
+     * @param string fieldName
+     * @param string value
+     * @return CSVRecord
+     */
     public function addField(string $fieldName, string $value) : CSVRecord
     {
         $this->fields[$fieldName] = $value;
@@ -29,6 +54,12 @@ class CSVRecord
         return $this;
     }
 
+    /**
+     * Set the return order of fields in getArray()
+     *
+     * @param array returnOrder 
+     * @return CSVRecord
+     */
     public function setReturnOrder(array $returnOrder) : CSVRecord
     {
         $this->returnOrder = $returnOrder;
