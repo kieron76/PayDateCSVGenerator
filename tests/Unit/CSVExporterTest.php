@@ -11,11 +11,15 @@ class CSVExporterTest extends TestCase
 
     /**
      * set up a exporter for all tests to use
+     *
+     * @var CSVExporter
      */ 
     protected $exporter; 
 
     /**
      * a record that will be added to the exporter
+     *
+     * @var $CSVRecord
      */ 
     protected $record;
 

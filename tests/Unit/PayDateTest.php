@@ -9,6 +9,12 @@ class PayDateTest extends TestCase
 {
 
 
+
+    /**
+     * hold an instance of PayDate for the tests to use
+     *
+     * @var PayDate sd 
+     */
     protected $sd;
 
     /**
@@ -54,7 +60,7 @@ class PayDateTest extends TestCase
     } 
 
     /**
-     * test to make sure that the bonus date in february is 10th 
+     * test to make sure that the bonus date in May is 12th (10th is a Sunday)
      *
      * @return void
      */

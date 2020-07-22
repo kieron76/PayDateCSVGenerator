@@ -9,6 +9,8 @@ class CSVRecordTest extends TestCase
 {
     /**
      * set up a record for all tests to use
+     *
+     * @var CSVRecord
      */ 
     protected $record; 
 
