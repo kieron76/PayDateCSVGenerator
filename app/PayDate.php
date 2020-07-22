@@ -45,7 +45,7 @@ class PayDate
      */
     public function getBasePayDate(int $addMonths = 0) : \DateTime
     {
-        $tmpDate = $this->date;
+        $tmpDate = new \DateTime($this->date->format('c'));
 
         $tmpDate->add(new \DateInterval('P'.$addMonths.'M'));
 
@@ -75,7 +75,7 @@ class PayDate
      */
     public function getBonusPayDate(int $addMonths = 0) : \DateTime
     {
-        $tmpDate = $this->date;
+        $tmpDate = new \DateTime($this->date->format('c'));
         $tmpDate->add(new \DateInterval('P'.$addMonths.'M'));
 
         // get the 10th day of the month 
@@ -97,4 +97,20 @@ class PayDate
         // must be a sunday, the following Tuesday will be in 2 days time
         return $tmpDate->add(new \DateInterval('P2D'));
     }
+
+    /**
+     * Get the date name of the month
+     *
+     * @param int $addMonths
+     * @return string
+     */
+    public function getMonthName(int $addMonths = 0) : string
+    {
+        $tmpDate = new \DateTime($this->date->format('c'));
+        $tmpDate->add(new \DateInterval('P'.$addMonths.'M'));
+        return $tmpDate->format('F');
+    }
+
+
+
 }

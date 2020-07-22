@@ -58,7 +58,7 @@ class CSVExporter
     {
 
         $fileInfo = new \SplFileInfo($this->fileName);
-        $file = $fileInfo->openFile('a');
+        $file = $fileInfo->openFile('w');
 
         foreach ($this->records as $record) {
             $file->fputcsv($record->getArray());
